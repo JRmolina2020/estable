@@ -20,9 +20,9 @@
   <!-- -START LOCAL -->
 
 
-  <link rel="shortcut icon" type="image/png" href="{{asset('/img/favicon.ico') }}">
-  <link rel="shortcut icon" sizes="192x192" href="{{asset('/img/favicon.ico') }}">
-  <link rel="stylesheet" href="{{asset('css/lte.min.css') }}">
+  <link rel="shortcut icon" type="image/png" href="{{secure_asset('/img/favicon.ico') }}">
+  <link rel="shortcut icon" sizes="192x192" href="{{secure_asset('/img/favicon.ico') }}">
+  <link rel="stylesheet" href="{{secure_asset('css/lte.min.css') }}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontisto@v3.0.4/css/fontisto/fontisto.min.css"></i>
 
 </head>
