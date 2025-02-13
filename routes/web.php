@@ -16,7 +16,9 @@ use App\Http\Controllers\API\IncomeController;
 use App\Http\Controllers\API\ProviderController;
 use App\Http\Controllers\API\EmailFac;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\WhatsAppController;
 
+Route::post('/send-whatsapp', [WhatsAppController::class, 'sendMessage']);
 //routes view one
 Route::get('/', function () {
     return view('login');

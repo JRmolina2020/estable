@@ -212,6 +212,24 @@
                             </tfoot>
                         </table>
                     </div>
+                    <div class="col-lg-2">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td>Gasto total</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>
+                                        <button @click="SendW()" type="button">
+                                            generar cierre
+                                        </button>
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                 </div>
                 <div v-if="factures.length == 0">
                     <div class="alert alert-danger" role="alert">
@@ -274,6 +292,7 @@ export default {
             "billstot",
             "moneySingle",
             "products",
+            "company",
         ]),
     },
 
@@ -341,6 +360,33 @@ export default {
             this.viewfac = 0;
             this.cod = id;
             this.$store.dispatch("viewactions");
+        },
+        SendW() {
+            //format
+            const formatoPesos = new Intl.NumberFormat("es-CO", {
+                style: "currency",
+                currency: "COP",
+                minimumFractionDigits: 0, // En Colombia, los pesos suelen mostrarse sin decimales
+            });
+            //end
+
+            let tot = formatoPesos.format(this.typeSale[0].tot);
+            let other = formatoPesos.format(this.typeSale[0].other);
+            let efecty = formatoPesos.format(this.typeSale[0].efecty);
+            const numero = "57" + this.company[0].phone; // Número en formato internacional sin '+'
+
+            const mensaje = encodeURIComponent(
+                "*Hola!* \n\nEspero que estés teniendo un gran día. \n *Quería mostrarte el cierre del dia:* \n *TOTAL VENTA:*" +
+                    tot +
+                    "\n*EFECTIVO:*" +
+                    efecty +
+                    "\n *OTROS:*" +
+                    other +
+                    ""
+            );
+
+            const url = `https://wa.me/${numero}?text=${mensaje}`;
+            window.open(url, "_blank");
         },
     },
 };

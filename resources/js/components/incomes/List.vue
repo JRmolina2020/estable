@@ -41,6 +41,7 @@
 
                         <td>
                             <button
+                                v-if="row.stockp >= row.quantity"
                                 v-can="'eliminar entrada'"
                                 type="button"
                                 @click="destroy(row.id)"

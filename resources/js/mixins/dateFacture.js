@@ -3,6 +3,7 @@ const { date_facture } = require("lodash");
 module.exports = {
     methods: {
         getList() {
+            this.$store.dispatch("Companyactions");
             let date = new Date();
             let day = date.getDate();
             let month = date.getMonth() + 1;

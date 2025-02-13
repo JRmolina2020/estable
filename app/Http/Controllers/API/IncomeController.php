@@ -28,6 +28,7 @@ class IncomeController extends Controller
                 'i.created_at',
                 'p.name as product',
                 'p.id as product_id',
+                'p.stock as stockp',
                 'u.name as user'
             )
             ->where('i.date_income', $date)
